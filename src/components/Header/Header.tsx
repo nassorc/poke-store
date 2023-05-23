@@ -19,8 +19,6 @@ export default function Header(params: HeaderType) {
   const dropdownButtonRef = useRef(null);
   useEffect(() => {
     document.addEventListener("click", (e) => {
-      console.log(e.target.closest("button"));
-      console.log(dropdownButtonRef.current);
       if (e.target.closest("button") != dropdownButtonRef.current) {
         setShowDropdown(false);
       }
@@ -36,23 +34,28 @@ export default function Header(params: HeaderType) {
           </div>
           <p className="text-xl">PokeStore</p>
         </div>
-        <div className="flex [&>*]:mr-2 last:m-0">
-          <Button className="relative bg-white w-12 h-12 hover:outline outline-2 outline-blue-700/50 rounded-md">
-            <FontAwesomeIcon icon={faCartShopping} />
+        <div className="flex [&>*]:mr-2 last:m-0 [&>button]:text-black">
+          <input
+            type="text"
+            placeholder="search"
+            className="px-3 border border-black/40 rounded-md"
+          />
+          <Button className="relative bg-orange-200 w-12 h-12 hover:outline outline-2 outline-blue-700/50 rounded-md">
+            <FontAwesomeIcon icon={faSun} />
           </Button>
           <Button className="relative bg-red-200 w-12 h-12 hover:outline outline-2 outline-blue-700/50 rounded-md">
-            <FontAwesomeIcon icon={faSun} />
+            <FontAwesomeIcon icon={faCartShopping} />
           </Button>
           <Button
             ref={dropdownButtonRef}
-            className={`relative bg-slate-700 w-12 h-12 hover:outline ${showDropdown ? "outline" : ""
+            className={`relative bg-slate-400 w-12 h-12 hover:outline ${showDropdown ? "outline" : ""
               } outline-2 outline-blue-700/50 rounded-md`}
             onClick={() => setShowDropdown(!showDropdown)}
           >
             {showDropdown ? (
-              <FontAwesomeIcon icon={faXmark} className="text-white" />
+              <FontAwesomeIcon icon={faXmark} />
             ) : (
-              <FontAwesomeIcon icon={faBars} className="text-white" />
+              <FontAwesomeIcon icon={faBars} />
             )}
             <Dropdown show={showDropdown}>
               <DropdownItem
