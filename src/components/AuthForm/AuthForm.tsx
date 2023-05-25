@@ -8,9 +8,13 @@ export default function AuthForm() {
   const user = useAuthState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(user)
+  const [errorMsg, setErrorMsg] = useState("");
+
   const handleLogin = async (e: any) => {
     e.preventDefault();
+    
+    if(!email || !password) setErrorMsg("Please enter an email and password");
+
     const payload = {
       email,
       password
@@ -19,6 +23,22 @@ export default function AuthForm() {
     if(data) {
       // location.assign("/");
     }
+    setErrorMsg(data);
+  }
+
+  const handleRegister = async (e: any) => {
+    e.preventDefault();
+    if(!email || !password) setErrorMsg("Please enter an email and password");
+
+    const res = await fetch("http://localhost:3002/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({email, password})
+    })
+    const data = await res.json();
+    console.log(data)
   }
 
   return (
@@ -39,6 +59,17 @@ export default function AuthForm() {
                 transition-all
             '
           />
+          <button className='
+              py-2
+            bg-red-400
+              w-full
+              rounded-lg
+              hover:bg-red-700
+              text-slate-100
+              transition-all
+            '
+            onClick={handleRegister}
+          >Create an account</button>
         </form> 
     </div>
 
