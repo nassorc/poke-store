@@ -1,7 +1,8 @@
 import { useContext, createContext, useReducer } from "react";
 import { reducer, initialState } from "./reducer";
+import { stateType } from "./types";
 // Context will contain the authentication token and user details
-const AuthStateContext = createContext({});
+const AuthStateContext = createContext<stateType | undefined>(undefined);
 // Context will contain the dispatch method given by useReducer
 const AuthDispatchContext = createContext({});
 

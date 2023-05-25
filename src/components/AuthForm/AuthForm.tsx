@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { loginUser, loginActions, useAuthDispatch, useAuthState } from "../../Context/AuthContext"
 import { actionType } from '../../Context/AuthContext/types';
 import FieldComponent from './FieldComponent';
+import { useNavigate } from 'react-router-dom';
 
 export default function AuthForm() {
+  const navigate = useNavigate();
   const dispatch = useAuthDispatch();
   const user = useAuthState();
   const [email, setEmail] = useState("");
@@ -20,8 +22,9 @@ export default function AuthForm() {
       password
     }
     const data = await loginUser(dispatch as React.Dispatch<actionType>, loginActions, payload);
+
     if(data) {
-      // location.assign("/");
+      navigate("/");
     }
     setErrorMsg(data);
   }
@@ -38,7 +41,6 @@ export default function AuthForm() {
       body: JSON.stringify({email, password})
     })
     const data = await res.json();
-    console.log(data)
   }
 
   return (

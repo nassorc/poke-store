@@ -7,10 +7,10 @@ export interface authActionsType {
     LOGOUT: LoginActions,
 }
 export interface stateType {
-    user: string | object | undefined,
-    token: string | undefined,
-    loading: boolean,
-    errorMessage: string | null,
+    user?: string | object | undefined,
+    token?: string | undefined,
+    loading?: boolean,
+    errorMessage?: string | null,
 }
 
 export interface actionType {

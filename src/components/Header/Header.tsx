@@ -11,10 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faSun } from "@fortawesome/free-regular-svg-icons";
 import { useEffect, useRef, useState } from "react";
-interface HeaderType {
-  name: string;
-}
-export default function Header(params: HeaderType) {
+
+export default function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownButtonRef = useRef(null);
   useEffect(() => {

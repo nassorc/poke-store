@@ -1,8 +1,8 @@
 import { stateType, actionType, authActionsType } from './types';
 
 // Check from local storage
-let user;
-let token;
+const user: any = (localStorage.getItem("user")) ? localStorage.getItem("user") : "";
+const token: any = (localStorage.getItem("accessToken")) ? localStorage.getItem("accessToken") : "";
 
 export const loginActions: authActionsType = {
   REQUEST_LOGIN: "request_login",
@@ -12,13 +12,13 @@ export const loginActions: authActionsType = {
 };
 
 export const initialState: stateType = {
-  user: "" || user,
-  token: "" || token,
+  user: user || "",
+  token: token || "",
   loading: false,
   errorMessage: null,
 };
 
-export const reducer = (state: stateType, action: actionType) => {
+export const reducer = (state: stateType, action: actionType): stateType => {
   switch (action.type) {
     case loginActions.REQUEST_LOGIN:
       return {

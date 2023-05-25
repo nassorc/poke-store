@@ -15,6 +15,7 @@ export async function loginUser(dispatch: React.Dispatch<actionType> , actions: 
     dispatch({ type: actions.REQUEST_LOGIN, payload: {} });
     const res = await fetch(BASE_URL, requestOptions);
     const data = await res.json();
+    localStorage.setItem("accessToken", data.accessToken);
     dispatch({ type: actions.LOGIN_SUCCESS, payload: {token : data.accessToken}})
     return data;
   }
