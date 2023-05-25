@@ -1,6 +1,5 @@
 import AuthForm from "./Components/AuthForm/AuthForm";
 import Header from "./Components/Header/Header";
-import HeaderButton from "./Components/Button/HeaderButton/HeaderButton";
 import "./App.css";
 
 function App() {

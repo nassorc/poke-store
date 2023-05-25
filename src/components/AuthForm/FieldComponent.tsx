@@ -1,5 +1,5 @@
 import React from 'react';
-interface InputFieldProps extends React.HtmlHTMLAttributes<HTMLInputElement> {
+interface InputFieldProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   label: string,
   type: string,
   name: string,
